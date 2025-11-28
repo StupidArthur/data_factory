@@ -106,8 +106,8 @@ def generate_data(config_path: str, output_path: str = None, preview: bool = Fal
 
 if __name__ == '__main__':
     # 配置参数
-    config_path = 'config/test_case_04d_polynomial_sine_lag.yaml'  # 配置文件路径（支持YAML和JSON）
-    output_path = 'output/test_case_04d_polynomial_sine_lag.csv'  # 输出文件路径（None表示不导出）
+    config_path = 'config/test_case_04g_polynomial_cascade_lag.yaml'  # 配置文件路径（支持YAML和JSON）
+    output_path = 'output/test_case_04g_polynomial_cascade_lag.csv'  # 输出文件路径（None表示不导出）
     preview = False  # 是否预览数据（True表示预览，False表示导出）
     
     # 生成数据

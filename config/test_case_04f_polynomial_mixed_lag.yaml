@@ -1,0 +1,60 @@
+# 测试项4f：混合源数据滞后多项式关系测试
+# Value1是正弦波，Value2是随机游走，Value3滞后5分钟后计算它们的和
+
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: "2024-01-01 00:00:00"
+  
+  templates:
+    # Value1：正弦波（振幅100，周期3600秒=1小时）
+    - type: TimePatternTemplate
+      name: value1
+      config:
+        output_name: F.value1
+        pattern_type: sinusoidal
+        amplitude: 100.0
+        period: 3600.0  # 1小时 = 3600秒
+        phase: 0.0
+        offset: 0.0
+        noise_level: 0.00
+    
+    # Value2：约束随机游走（每次变化[-3, 3]，值范围[0, 100]）
+    - type: RandomPatternTemplate
+      name: value2
+      config:
+        output_name: F.value2
+        distribution: constrained_random_walk
+        min_value: 0.0
+        max_value: 100.0
+        step_range: [-3.0, 3.0]  # 每次变化量限制在[-3, 3]
+        seed: 110  # 固定种子
+    
+    # Value3：滞后多项式关系
+    # value3[index] = value1[index - 60] + value2[index - 60]
+    - type: PolynomialTemplate
+      name: value3
+      config:
+        output_name: F.value3
+        source_names:
+          - F.value1
+          - F.value2
+        coefficients:
+          constant: 0.0
+          F.value1: 1.0   # value1的系数为1
+          F.value2: 1.0   # value2的系数为1
+        lag_seconds: 300  # 滞后5分钟（300秒 = 60个点）
+        noise_level: 0.00
+
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  hide_parameter_descriptions: true
+  column_descriptions:
+    timeStamp: "时间戳"
+    F.value1: "正弦波（振幅100，周期1小时）"
+    F.value2: "随机游走（0~100，步长[-3,3]）"
+    F.value3: "滞后多项式（value1 + value2，滞后5分钟）"
+

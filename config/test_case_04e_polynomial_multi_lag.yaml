@@ -1,0 +1,157 @@
+# 测试项4e：多参数滞后多项式关系测试
+# Value1~Value9独立随机游走，Value10滞后5分钟后计算9个参数的多项式关系
+
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: "2024-01-01 00:00:00"
+  
+  templates:
+    # Value1：约束随机游走（每次变化[-3, 3]，值范围[0, 100]）
+    - type: RandomPatternTemplate
+      name: value1
+      config:
+        output_name: F.value1
+        distribution: constrained_random_walk
+        min_value: 0.0
+        max_value: 100.0
+        step_range: [-3.0, 3.0]
+        seed: 101
+    
+    # Value2：约束随机游走
+    - type: RandomPatternTemplate
+      name: value2
+      config:
+        output_name: F.value2
+        distribution: constrained_random_walk
+        min_value: 0.0
+        max_value: 100.0
+        step_range: [-3.0, 3.0]
+        seed: 102
+    
+    # Value3：约束随机游走
+    - type: RandomPatternTemplate
+      name: value3
+      config:
+        output_name: F.value3
+        distribution: constrained_random_walk
+        min_value: 0.0
+        max_value: 100.0
+        step_range: [-3.0, 3.0]
+        seed: 103
+    
+    # Value4：约束随机游走
+    - type: RandomPatternTemplate
+      name: value4
+      config:
+        output_name: F.value4
+        distribution: constrained_random_walk
+        min_value: 0.0
+        max_value: 100.0
+        step_range: [-3.0, 3.0]
+        seed: 104
+    
+    # Value5：约束随机游走
+    - type: RandomPatternTemplate
+      name: value5
+      config:
+        output_name: F.value5
+        distribution: constrained_random_walk
+        min_value: 0.0
+        max_value: 100.0
+        step_range: [-3.0, 3.0]
+        seed: 105
+    
+    # Value6：约束随机游走
+    - type: RandomPatternTemplate
+      name: value6
+      config:
+        output_name: F.value6
+        distribution: constrained_random_walk
+        min_value: 0.0
+        max_value: 100.0
+        step_range: [-3.0, 3.0]
+        seed: 106
+    
+    # Value7：约束随机游走
+    - type: RandomPatternTemplate
+      name: value7
+      config:
+        output_name: F.value7
+        distribution: constrained_random_walk
+        min_value: 0.0
+        max_value: 100.0
+        step_range: [-3.0, 3.0]
+        seed: 107
+    
+    # Value8：约束随机游走
+    - type: RandomPatternTemplate
+      name: value8
+      config:
+        output_name: F.value8
+        distribution: constrained_random_walk
+        min_value: 0.0
+        max_value: 100.0
+        step_range: [-3.0, 3.0]
+        seed: 108
+    
+    # Value9：约束随机游走
+    - type: RandomPatternTemplate
+      name: value9
+      config:
+        output_name: F.value9
+        distribution: constrained_random_walk
+        min_value: 0.0
+        max_value: 100.0
+        step_range: [-3.0, 3.0]
+        seed: 109
+    
+    # Value10：滞后多项式关系
+    # value10[index] = 1*value1[index-60] + 2*value2[index-60] + 3*value3[index-60] + ... + 9*value9[index-60]
+    - type: PolynomialTemplate
+      name: value10
+      config:
+        output_name: F.value10
+        source_names:
+          - F.value1
+          - F.value2
+          - F.value3
+          - F.value4
+          - F.value5
+          - F.value6
+          - F.value7
+          - F.value8
+          - F.value9
+        coefficients:
+          constant: 0.0
+          F.value1: 1.0   # value1的系数为1
+          F.value2: 2.0   # value2的系数为2
+          F.value3: 3.0   # value3的系数为3
+          F.value4: 4.0   # value4的系数为4
+          F.value5: 5.0   # value5的系数为5
+          F.value6: 6.0   # value6的系数为6
+          F.value7: 7.0   # value7的系数为7
+          F.value8: 8.0   # value8的系数为8
+          F.value9: 9.0   # value9的系数为9
+        lag_seconds: 300  # 滞后5分钟（300秒 = 60个点）
+        noise_level: 0.00
+
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  hide_parameter_descriptions: true
+  column_descriptions:
+    timeStamp: "时间戳"
+    F.value1: "随机游走1（0~100，步长[-3,3]）"
+    F.value2: "随机游走2（0~100，步长[-3,3]）"
+    F.value3: "随机游走3（0~100，步长[-3,3]）"
+    F.value4: "随机游走4（0~100，步长[-3,3]）"
+    F.value5: "随机游走5（0~100，步长[-3,3]）"
+    F.value6: "随机游走6（0~100，步长[-3,3]）"
+    F.value7: "随机游走7（0~100，步长[-3,3]）"
+    F.value8: "随机游走8（0~100，步长[-3,3]）"
+    F.value9: "随机游走9（0~100，步长[-3,3]）"
+    F.value10: "滞后多项式（1*v1+2*v2+...+9*v9，滞后5分钟）"
+

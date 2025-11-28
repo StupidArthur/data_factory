@@ -1,0 +1,78 @@
+# 测试项4g：级联滞后多项式关系测试
+# Value1和Value2独立随机游走，Value3是第一层滞后多项式，Value4是第二层滞后多项式（依赖于Value3）
+
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: "2024-01-01 00:00:00"
+  
+  templates:
+    # Value1：约束随机游走（每次变化[-3, 3]，值范围[0, 100]）
+    - type: RandomPatternTemplate
+      name: value1
+      config:
+        output_name: F.value1
+        distribution: constrained_random_walk
+        min_value: 0.0
+        max_value: 100.0
+        step_range: [-3.0, 3.0]  # 每次变化量限制在[-3, 3]
+        seed: 120  # 固定种子
+    
+    # Value2：约束随机游走（每次变化[-3, 3]，值范围[0, 100]）
+    - type: RandomPatternTemplate
+      name: value2
+      config:
+        output_name: F.value2
+        distribution: constrained_random_walk
+        min_value: 0.0
+        max_value: 100.0
+        step_range: [-3.0, 3.0]  # 每次变化量限制在[-3, 3]
+        seed: 121  # 固定种子（与value1不同）
+    
+    # Value3：第一层滞后多项式关系
+    # value3[index] = value1[index - 60] + 3 * value2[index - 60]
+    - type: PolynomialTemplate
+      name: value3
+      config:
+        output_name: F.value3
+        source_names:
+          - F.value1
+          - F.value2
+        coefficients:
+          constant: 0.0
+          F.value1: 1.0   # value1的系数为1
+          F.value2: 3.0   # value2的系数为3
+        lag_seconds: 300  # 滞后5分钟（300秒 = 60个点）
+        noise_level: 0.00
+    
+    # Value4：第二层滞后多项式关系（依赖于Value3、Value1和Value2）
+    # value4[index] = value3[index - 60] + 0.5 * value1[index - 60] + 0.5 * value2[index - 60]
+    - type: PolynomialTemplate
+      name: value4
+      config:
+        output_name: F.value4
+        source_names:
+          - F.value3
+          - F.value1
+          - F.value2
+        coefficients:
+          constant: 0.0
+          F.value3: 1.0   # value3的系数为1
+          F.value1: 0.5   # value1的系数为0.5
+          F.value2: 0.5   # value2的系数为0.5
+        lag_seconds: 300  # 滞后5分钟（300秒 = 60个点）
+        noise_level: 0.00
+
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  hide_parameter_descriptions: true
+  column_descriptions:
+    timeStamp: "时间戳"
+    F.value1: "随机游走1（0~100，步长[-3,3]）"
+    F.value2: "随机游走2（0~100，步长[-3,3]）"
+    F.value3: "第一层滞后多项式（value1 + 3*value2，滞后5分钟）"
+    F.value4: "第二层滞后多项式（value3 + 0.5*value1 + 0.5*value2，滞后5分钟）"
+
