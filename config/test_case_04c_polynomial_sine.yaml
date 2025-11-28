@@ -1,0 +1,61 @@
+# 测试项4c：多项式关系测试（正弦波源数据，无滞后）
+# Value1和Value2是不同周期的正弦波，Value3是它们的和
+
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: "2024-01-01 00:00:00"
+  
+  templates:
+    # Value1：正弦波（振幅100，周期3600秒=1小时）
+    - type: TimePatternTemplate
+      name: value1
+      config:
+        output_name: F.value1
+        pattern_type: sinusoidal
+        amplitude: 100.0
+        period: 3600.0  # 1小时 = 3600秒
+        phase: 0.0
+        offset: 0.0
+        noise_level: 0.00
+    
+    # Value2：正弦波（振幅50，周期1900秒）
+    - type: TimePatternTemplate
+      name: value2
+      config:
+        output_name: F.value2
+        pattern_type: sinusoidal
+        amplitude: 50.0
+        period: 1900.0  # 1900秒
+        phase: 0.0
+        offset: 0.0
+        noise_level: 0.00
+    
+    # Value3：多项式关系（无滞后）
+    # value3[index] = value1[index] + value2[index]
+    - type: PolynomialTemplate
+      name: value3
+      config:
+        output_name: F.value3
+        source_names:
+          - F.value1
+          - F.value2
+        coefficients:
+          constant: 0.0
+          F.value1: 1.0   # value1的系数为1
+          F.value2: 1.0   # value2的系数为1
+        lag_seconds: 0   # 无滞后
+        noise_level: 0.00
+
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  hide_parameter_descriptions: true
+  column_descriptions:
+    timeStamp: "时间戳"
+    F.value1: "正弦波1（振幅100，周期1小时）"
+    F.value2: "正弦波2（振幅50，周期1900秒）"
+    F.value3: "多项式（value1 + value2，无滞后）"
+

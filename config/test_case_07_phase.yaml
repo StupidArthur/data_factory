@@ -1,0 +1,43 @@
+# 测试项7：相位差测试
+# 验证不同相位参数之间的关系
+
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: "2024-01-01 00:00:00"
+  
+  templates:
+    # 第一个正弦波：相位0度
+    - type: TimePatternTemplate
+      name: sine_1
+      config:
+        output_name: F.sine1
+        pattern_type: sinusoidal
+        amplitude: 100.0
+        period: 3600.0  # 1小时周期
+        phase: 0.0  # 相位0度
+        offset: 50.0
+        noise_level: 0.00
+    
+    # 第二个正弦波：相位90度（周期/4）
+    - type: TimePatternTemplate
+      name: sine_2
+      config:
+        output_name: F.sine2
+        pattern_type: sinusoidal
+        amplitude: 100.0
+        period: 3600.0  # 相同周期
+        phase: 900.0  # 90度相位差（3600/4 = 900秒）
+        offset: 50.0
+        noise_level: 0.00
+
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  column_descriptions:
+    timeStamp: "时间戳"
+    F.sine1: "正弦波1（相位0度）"
+    F.sine2: "正弦波2（相位90度）"
+

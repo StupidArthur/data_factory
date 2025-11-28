@@ -1,0 +1,58 @@
+# 测试项4b：滞后非线性关系测试
+# Value1和Value2独立随机游走，Value3滞后5分钟后计算非线性关系
+
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: "2024-01-01 00:00:00"
+  
+  templates:
+    # Value1：约束随机游走（每次变化[-3, 3]，值范围[0, 100]）
+    - type: RandomPatternTemplate
+      name: value1
+      config:
+        output_name: F.value1
+        distribution: constrained_random_walk
+        min_value: 0.0
+        max_value: 100.0
+        step_range: [-3.0, 3.0]  # 每次变化量限制在[-3, 3]
+        seed: 300  # 固定种子
+    
+    # Value2：约束随机游走（每次变化[-3, 3]，值范围[0, 100]）
+    - type: RandomPatternTemplate
+      name: value2
+      config:
+        output_name: F.value2
+        distribution: constrained_random_walk
+        min_value: 0.0
+        max_value: 100.0
+        step_range: [-3.0, 3.0]  # 每次变化量限制在[-3, 3]
+        seed: 400  # 固定种子（与value1不同）
+    
+    # Value3：滞后非线性关系
+    # value3[index] = sqrt(value1[index - 60] * value2[index - 60])
+    - type: NonlinearLagTemplate
+      name: value3
+      config:
+        output_name: F.value3
+        source_names:
+          - F.value1
+          - F.value2
+        function: sqrt
+        function_params:
+          operation: multiply  # 乘法操作：sqrt(value1 * value2)
+        lag_seconds: 300  # 滞后5分钟（300秒 = 60个点）
+        noise_level: 0.00
+
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  hide_parameter_descriptions: true
+  column_descriptions:
+    timeStamp: "时间戳"
+    F.value1: "随机游走1（0~100，步长[-3,3]）"
+    F.value2: "随机游走2（0~100，步长[-3,3]）"
+    F.value3: "滞后非线性（sqrt(value1*value2)，滞后5分钟）"
+

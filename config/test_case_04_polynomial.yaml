@@ -1,0 +1,75 @@
+# 测试项4：多项式关系测试
+# 验证多个参数之间的多项式关系
+
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: "2024-01-01 00:00:00"
+  
+  templates:
+    # 源参数X：正弦波
+    - type: TimePatternTemplate
+      name: x
+      config:
+        output_name: F.x
+        pattern_type: sinusoidal
+        amplitude: 50.0
+        period: 3600.0
+        phase: 0.0
+        offset: 0.0
+        noise_level: 0.00
+    
+    # 源参数Y：正弦波（不同周期）
+    - type: TimePatternTemplate
+      name: y
+      config:
+        output_name: F.y
+        pattern_type: sinusoidal
+        amplitude: 30.0
+        period: 7200.0  # 2小时周期
+        phase: 0.0
+        offset: 0.0
+        noise_level: 0.00
+    
+    # 源参数Z：正弦波（不同周期）
+    - type: TimePatternTemplate
+      name: z
+      config:
+        output_name: F.z
+        pattern_type: sinusoidal
+        amplitude: 20.0
+        period: 1800.0  # 0.5小时周期
+        phase: 0.0
+        offset: 0.0
+        noise_level: 0.00
+    
+    # 组合参数：多项式关系
+    # F.combined = 10 + 0.1*F.x + 0.2*F.y + 0.3*F.z + 0.001*F.x*F.y
+    - type: PolynomialTemplate
+      name: combined
+      config:
+        output_name: F.combined
+        source_names:
+          - F.x
+          - F.y
+          - F.z
+        coefficients:
+          constant: 10.0
+          F.x: 0.1
+          F.y: 0.2
+          F.z: 0.3
+          F.x*F.y: 0.001
+        noise_level: 0.00
+
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  column_descriptions:
+    timeStamp: "时间戳"
+    F.x: "源参数X（正弦波）"
+    F.y: "源参数Y（正弦波）"
+    F.z: "源参数Z（正弦波）"
+    F.combined: "组合参数（多项式关系）"
+

@@ -1,0 +1,31 @@
+# 测试项1：单一正弦波基础测试
+# 验证最基本的单一参数预测场景
+
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: "2024-01-01 00:00:00"
+  
+  templates:
+    - type: TimePatternTemplate
+      name: sine_wave
+      config:
+        output_name: F.sine
+        pattern_type: sinusoidal
+        amplitude: 100.0
+        period: 3600.0  # 1小时周期
+        phase: 0.0
+        offset: 50.0
+        noise_level: 0.00  # 无噪声，便于验证
+
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  # 是否隐藏参数描述（true: 使用"未知工况N"，false: 使用column_descriptions中的描述）
+  hide_parameter_descriptions: true
+  column_descriptions:
+    timeStamp: "时间戳"
+    F.sine: "正弦波数据（振幅100，周期1小时）"
+

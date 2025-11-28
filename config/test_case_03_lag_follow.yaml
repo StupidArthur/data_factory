@@ -1,0 +1,44 @@
+# 测试项3：滞后跟随关系测试
+# 验证一个参数跟随另一个参数变化的场景
+# Value1用0~100的随机数，Value2用5分钟滞后的Value1
+
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: "2024-01-01 00:00:00"
+  
+  templates:
+    # Value1：0~100的随机数
+    - type: RandomPatternTemplate
+      name: value1
+      config:
+        output_name: F.value1
+        distribution: uniform
+        min_value: 0.0
+        max_value: 100.0
+        seed: 123  # 固定种子，确保可重复性
+    
+    # Value2：滞后跟随Value1，滞后5分钟（300秒）
+    - type: LagFollowTemplate
+      name: value2
+      config:
+        output_name: F.value2
+        source_name: F.value1
+        lag_seconds: 300  # 5分钟 = 300秒
+        sensitivity: 1.0  # 敏感度100%，完全跟随
+        initial_value: 50.0
+        decay_rate: 0.0  # 无衰减
+        noise_level: 0.00
+
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  # 是否隐藏参数描述（true: 使用"未知工况N"，false: 使用column_descriptions中的描述）
+  hide_parameter_descriptions: true
+  column_descriptions:
+    timeStamp: "时间戳"
+    F.value1: "随机数（0~100均匀分布）"
+    F.value2: "滞后跟随Value1（滞后5分钟）"
+

@@ -1,0 +1,88 @@
+# 正弦波数据生成配置
+# 生成一个简单的正弦波数据
+
+generator:
+  # 时间间隔（秒）
+  time_interval: 5.0
+  
+  # 历史数据点数
+  history_points: 10000
+  
+  # 未来数据点数（10分钟 = 120点）
+  future_points: 120
+  
+  # 起始时间
+  start_time: "2024-01-01 00:00:00"
+  
+  # 能力模板列表
+  templates:
+    # 第一个正弦波模板（振幅100，周期1小时）
+    - type: TimePatternTemplate
+      name: sine_wave_1
+      config:
+        # 输出数据名称
+        output_name: F.sine1
+        
+        # 模式类型：sinusoidal（正弦）
+        pattern_type: sinusoidal
+        
+        # 振幅（峰值）
+        amplitude: 100.0
+        
+        # 周期（秒），3600秒 = 1小时
+        period: 3600
+        
+        # 相位（秒），0表示从0开始
+        phase: 0.0
+        
+        # 偏移量（基准值）
+        offset: 50.0
+        
+        # 噪声水平（相对值，0.05表示5%的噪声）
+        noise_level: 0.00
+    
+    # 第二个正弦波模板（振幅50，周期2小时）
+    - type: TimePatternTemplate
+      name: sine_wave_2
+      config:
+        # 输出数据名称
+        output_name: F.sine2
+        
+        # 模式类型：sinusoidal（正弦）
+        pattern_type: sinusoidal
+        
+        # 振幅（峰值），比第一个小
+        amplitude: 50.0
+        
+        # 周期（秒），7200秒 = 2小时，比第一个长
+        period: 7200
+        
+        # 相位（秒），可以设置不同的相位
+        phase: 0.0
+        
+        # 偏移量（基准值）
+        offset: 30.0
+        
+        # 噪声水平（相对值，0.05表示5%的噪声）
+        noise_level: 0.00
+
+# 模板管理配置
+template:
+  # 时间格式：datetime（2024-1-1 00:00:00）
+  time_format: datetime
+  
+  # 是否有标题行（第一行变量名）
+  has_title_row: true
+  
+  # 是否有描述行（第二行变量描述）
+  has_description_row: true
+  
+  # 是否隐藏参数描述（true: 使用"未知工况N"，false: 使用column_descriptions中的描述）
+  hide_parameter_descriptions: true
+  
+  # 列描述（当hide_parameter_descriptions为false时使用）
+  column_descriptions:
+    timeStamp: "时间戳"
+    F.sine1: "正弦波1（振幅100，周期1小时）"
+    F.sine2: "正弦波2（振幅50，周期2小时）"
+

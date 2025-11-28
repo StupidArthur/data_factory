@@ -1,0 +1,45 @@
+# 测试项2：多参数独立正弦波测试
+# 验证多个独立参数同时预测的场景
+
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: "2024-01-01 00:00:00"
+  
+  templates:
+    # 第一个正弦波：振幅100，周期1小时
+    - type: TimePatternTemplate
+      name: sine_wave_1
+      config:
+        output_name: F.sine1
+        pattern_type: sinusoidal
+        amplitude: 100.0
+        period: 3600.0  # 1小时
+        phase: 0.0
+        offset: 50.0
+        noise_level: 0.00
+    
+    # 第二个正弦波：振幅50，周期2小时
+    - type: TimePatternTemplate
+      name: sine_wave_2
+      config:
+        output_name: F.sine2
+        pattern_type: sinusoidal
+        amplitude: 50.0
+        period: 7200.0  # 2小时
+        phase: 0.0
+        offset: 30.0
+        noise_level: 0.00
+
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  # 是否隐藏参数描述（true: 使用"未知工况N"，false: 使用column_descriptions中的描述）
+  hide_parameter_descriptions: true
+  column_descriptions:
+    timeStamp: "时间戳"
+    F.sine1: "正弦波1（振幅100，周期1小时）"
+    F.sine2: "正弦波2（振幅50，周期2小时）"
+

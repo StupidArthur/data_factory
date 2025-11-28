@@ -1,0 +1,43 @@
+# 测试项6：噪声影响测试
+# 验证噪声对数据生成和预测的影响
+
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: "2024-01-01 00:00:00"
+  
+  templates:
+    # 无噪声正弦波
+    - type: TimePatternTemplate
+      name: clean
+      config:
+        output_name: F.clean
+        pattern_type: sinusoidal
+        amplitude: 100.0
+        period: 3600.0
+        phase: 0.0
+        offset: 50.0
+        noise_level: 0.00  # 无噪声
+    
+    # 有噪声正弦波（10%噪声）
+    - type: TimePatternTemplate
+      name: noisy
+      config:
+        output_name: F.noisy
+        pattern_type: sinusoidal
+        amplitude: 100.0
+        period: 3600.0
+        phase: 0.0
+        offset: 50.0
+        noise_level: 0.10  # 10%噪声
+
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  column_descriptions:
+    timeStamp: "时间戳"
+    F.clean: "无噪声正弦波"
+    F.noisy: "有噪声正弦波（10%噪声）"
+

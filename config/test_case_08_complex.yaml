@@ -1,0 +1,90 @@
+# 测试项8：复杂组合场景测试
+# 验证最复杂的组合场景，包含时间规律、滞后跟随、多项式关系的组合
+
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: "2024-01-01 00:00:00"
+  
+  templates:
+    # 光照强度：24小时周期正弦波
+    - type: TimePatternTemplate
+      name: light
+      config:
+        output_name: F.light
+        pattern_type: sinusoidal
+        amplitude: 100.0
+        period: 86400.0  # 24小时
+        phase: 0.0
+        offset: 50.0
+        noise_level: 0.03
+    
+    # 电功率：24小时周期正弦波，6小时相位偏移
+    - type: TimePatternTemplate
+      name: power
+      config:
+        output_name: F.power
+        pattern_type: sinusoidal
+        amplitude: 50.0
+        period: 86400.0  # 24小时
+        phase: 21600.0  # 6小时偏移
+        offset: 100.0
+        noise_level: 0.02
+    
+    # 温度：滞后跟随功率，30秒滞后
+    - type: LagFollowTemplate
+      name: temperature
+      config:
+        output_name: F.temperature
+        source_name: F.power
+        lag_seconds: 30
+        sensitivity: 0.5
+        initial_value: 20.0
+        decay_rate: 0.01
+        noise_level: 0.02
+    
+    # 湿度：滞后跟随光照，60秒滞后
+    - type: LagFollowTemplate
+      name: humidity
+      config:
+        output_name: F.humidity
+        source_name: F.light
+        lag_seconds: 60
+        sensitivity: 0.3
+        initial_value: 60.0
+        decay_rate: 0.005
+        noise_level: 0.02
+    
+    # 综合指标：多项式组合多个参数
+    - type: PolynomialTemplate
+      name: composite
+      config:
+        output_name: F.composite
+        source_names:
+          - F.light
+          - F.power
+          - F.temperature
+          - F.humidity
+        coefficients:
+          constant: 100.0
+          F.light: 0.5
+          F.power: 0.3
+          F.temperature: 0.2
+          F.humidity: 0.1
+          F.light*F.power: 0.001
+          F.temperature*F.humidity: 0.0005
+        noise_level: 0.05
+
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  column_descriptions:
+    timeStamp: "时间戳"
+    F.light: "光照强度（24小时周期）"
+    F.power: "电功率（24小时周期，6小时偏移）"
+    F.temperature: "温度（滞后跟随功率30秒）"
+    F.humidity: "湿度（滞后跟随光照60秒）"
+    F.composite: "综合指标（多项式组合）"
+

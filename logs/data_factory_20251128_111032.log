@@ -1,0 +1,8 @@
+2025-11-28 11:10:32 - data_factory - INFO - 加载配置文件: config/sine_wave_config.yaml
+2025-11-28 11:10:32 - data_factory - INFO - 数据生成器已创建
+2025-11-28 11:10:32 - data_factory - INFO - 开始生成数据...
+2025-11-28 11:10:32 - data_factory - INFO - 数据生成完成，共 10120 行，3 列
+2025-11-28 11:10:32 - data_factory - INFO - 数据已导出到: output\sine_wave_data_20251128_111032_history.csv
+2025-11-28 11:10:32 - data_factory - INFO - 历史数据已导出到: output\sine_wave_data_20251128_111032_history.csv (共 10000 行)
+2025-11-28 11:10:32 - data_factory - INFO - 数据已导出到: output\sine_wave_data_20251128_111032.csv
+2025-11-28 11:10:32 - data_factory - INFO - 完整数据已导出到: output\sine_wave_data_20251128_111032.csv (共 10120 行，包含未来 120 点)

@@ -1,0 +1,93 @@
+# 数据工厂示例配置文件（YAML格式）
+# 包含多种数据关系的示例
+
+generator:
+  # 时间间隔（秒）
+  time_interval: 5.0
+  
+  # 历史数据点数
+  history_points: 10000
+  
+  # 未来数据点数（10分钟 = 120点）
+  future_points: 120
+  
+  # 起始时间
+  start_time: "2024-01-01 00:00:00"
+  
+  # 能力模板列表
+  templates:
+    # 光照强度（正弦波，24小时周期）
+    - type: TimePatternTemplate
+      name: light_pattern
+      config:
+        output_name: F.light
+        pattern_type: sinusoidal
+        amplitude: 100.0
+        period: 86400.0  # 24小时
+        phase: 0.0
+        offset: 50.0
+        noise_level: 0.05
+    
+    # 电功率（正弦波，24小时周期，相位偏移6小时）
+    - type: TimePatternTemplate
+      name: power_pattern
+      config:
+        output_name: F.power
+        pattern_type: sinusoidal
+        amplitude: 50.0
+        period: 86400.0  # 24小时
+        phase: 21600.0   # 6小时偏移
+        offset: 100.0
+        noise_level: 0.03
+    
+    # 温度（滞后跟随电功率）
+    - type: LagFollowTemplate
+      name: temperature_follow
+      config:
+        output_name: F.temperature
+        source_name: F.power  # 跟随电功率
+        lag_seconds: 30      # 滞后30秒
+        sensitivity: 0.5      # 敏感度
+        initial_value: 20.0   # 初始温度
+        decay_rate: 0.01      # 衰减率
+        noise_level: 0.02
+    
+    # 组合值（多项式关系）
+    - type: PolynomialTemplate
+      name: combined_value
+      config:
+        output_name: F.combined
+        source_names:
+          - F.light
+          - F.power
+          - F.temperature
+        coefficients:
+          constant: 10.0
+          F.light: 0.1
+          F.power: 0.2
+          F.temperature: 0.3
+          F.light*F.power: 0.001  # 交叉项
+        noise_level: 0.05
+
+# 模板管理配置
+template:
+  # 时间格式：datetime（2024-1-1 00:00:00）
+  time_format: datetime
+  
+  # 是否有标题行
+  has_title_row: true
+  
+  # 是否有描述行
+  has_description_row: true
+  
+  # 是否隐藏参数描述（true: 使用"未知工况N"，false: 使用column_descriptions中的描述）
+  hide_parameter_descriptions: true
+  
+  # 列描述（当hide_parameter_descriptions为false时使用）
+  column_descriptions:
+    timeStamp: "时间戳"
+    F.light: "光照强度"
+    F.power: "电功率"
+    F.temperature: "温度"
+    F.combined: "组合值"
+

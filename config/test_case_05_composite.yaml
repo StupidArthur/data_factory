@@ -1,0 +1,74 @@
+# 测试项5：组合关系测试
+# 验证多种数据关系的组合使用
+
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: "2024-01-01 00:00:00"
+  
+  templates:
+    # 光照强度：时间规律（正弦波）
+    - type: TimePatternTemplate
+      name: light
+      config:
+        output_name: F.light
+        pattern_type: sinusoidal
+        amplitude: 100.0
+        period: 86400.0  # 24小时周期
+        phase: 0.0
+        offset: 50.0
+        noise_level: 0.02
+    
+    # 电功率：时间规律（正弦波，相位偏移）
+    - type: TimePatternTemplate
+      name: power
+      config:
+        output_name: F.power
+        pattern_type: sinusoidal
+        amplitude: 50.0
+        period: 86400.0  # 24小时周期
+        phase: 21600.0  # 6小时相位偏移
+        offset: 100.0
+        noise_level: 0.03
+    
+    # 温度：滞后跟随功率
+    - type: LagFollowTemplate
+      name: temperature
+      config:
+        output_name: F.temperature
+        source_name: F.power
+        lag_seconds: 30
+        sensitivity: 0.5
+        initial_value: 20.0
+        decay_rate: 0.01
+        noise_level: 0.02
+    
+    # 组合值：多项式关系
+    - type: PolynomialTemplate
+      name: combined
+      config:
+        output_name: F.combined
+        source_names:
+          - F.light
+          - F.power
+          - F.temperature
+        coefficients:
+          constant: 10.0
+          F.light: 0.1
+          F.power: 0.2
+          F.temperature: 0.3
+          F.light*F.power: 0.001
+        noise_level: 0.05
+
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  column_descriptions:
+    timeStamp: "时间戳"
+    F.light: "光照强度"
+    F.power: "电功率"
+    F.temperature: "温度（滞后跟随功率）"
+    F.combined: "组合值（多项式关系）"
+

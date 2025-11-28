@@ -1,0 +1,82 @@
+{
+  "generator": {
+    "time_interval": 5.0,
+    "history_points": 10000,
+    "future_points": 120,
+    "start_time": "2024-01-01 00:00:00",
+    "templates": [
+      {
+        "type": "TimePatternTemplate",
+        "name": "light_pattern",
+        "config": {
+          "name": "light_intensity",
+          "output_name": "F.light",
+          "pattern_type": "sinusoidal",
+          "amplitude": 100.0,
+          "period": 86400.0,
+          "phase": 0.0,
+          "offset": 50.0,
+          "noise_level": 0.05
+        }
+      },
+      {
+        "type": "TimePatternTemplate",
+        "name": "power_pattern",
+        "config": {
+          "name": "power",
+          "output_name": "F.power",
+          "pattern_type": "sinusoidal",
+          "amplitude": 50.0,
+          "period": 86400.0,
+          "phase": 21600.0,
+          "offset": 100.0,
+          "noise_level": 0.03
+        }
+      },
+      {
+        "type": "LagFollowTemplate",
+        "name": "temperature_follow",
+        "config": {
+          "name": "temperature",
+          "output_name": "F.temperature",
+          "source_name": "F.power",
+          "lag_seconds": 30,
+          "sensitivity": 0.5,
+          "initial_value": 20.0,
+          "decay_rate": 0.01,
+          "noise_level": 0.02
+        }
+      },
+      {
+        "type": "PolynomialTemplate",
+        "name": "combined_value",
+        "config": {
+          "name": "combined",
+          "output_name": "F.combined",
+          "source_names": ["F.light", "F.power", "F.temperature"],
+          "coefficients": {
+            "constant": 10.0,
+            "F.light": 0.1,
+            "F.power": 0.2,
+            "F.temperature": 0.3,
+            "F.light*F.power": 0.001
+          },
+          "noise_level": 0.05
+        }
+      }
+    ]
+  },
+  "template": {
+    "time_format": "datetime",
+    "has_title_row": true,
+    "has_description_row": true,
+    "column_descriptions": {
+      "timeStamp": "时间戳",
+      "F.light": "光照强度",
+      "F.power": "电功率",
+      "F.temperature": "温度",
+      "F.combined": "组合值"
+    }
+  }
+}
+
