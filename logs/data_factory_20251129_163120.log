@@ -1,0 +1,182 @@
+2025-11-29 16:31:20 - data_factory - INFO - 找到 18 个配置文件，开始批量生成数据...
+2025-11-29 16:31:20 - data_factory - INFO - 处理配置文件: sine_wave_config.yaml
+2025-11-29 16:31:20 - data_factory - INFO - 加载配置文件: input\sine_wave_config.yaml
+2025-11-29 16:31:20 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:20 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:20 - data_factory - INFO - 数据生成完成，共 10120 行，3 列
+2025-11-29 16:31:20 - data_factory - INFO - 数据已导出到: output\sine_wave_config_20251129_163120_history.csv
+2025-11-29 16:31:20 - data_factory - INFO - 历史数据已导出到: output\sine_wave_config_20251129_163120_history.csv (共 10000 行)
+2025-11-29 16:31:20 - data_factory - INFO - 数据已导出到: output\sine_wave_config_20251129_163120.csv
+2025-11-29 16:31:20 - data_factory - INFO - 完整数据已导出到: output\sine_wave_config_20251129_163120.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:20 - data_factory - INFO -   ✓ 完成: sine_wave_config
+2025-11-29 16:31:20 - data_factory - INFO - 处理配置文件: test_case_01_single_sine.yaml
+2025-11-29 16:31:20 - data_factory - INFO - 加载配置文件: input\test_case_01_single_sine.yaml
+2025-11-29 16:31:20 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:20 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:20 - data_factory - INFO - 数据生成完成，共 10120 行，2 列
+2025-11-29 16:31:20 - data_factory - INFO - 数据已导出到: output\test_case_01_single_sine_20251129_163120_history.csv
+2025-11-29 16:31:20 - data_factory - INFO - 历史数据已导出到: output\test_case_01_single_sine_20251129_163120_history.csv (共 10000 行)
+2025-11-29 16:31:20 - data_factory - INFO - 数据已导出到: output\test_case_01_single_sine_20251129_163120.csv
+2025-11-29 16:31:20 - data_factory - INFO - 完整数据已导出到: output\test_case_01_single_sine_20251129_163120.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:20 - data_factory - INFO -   ✓ 完成: test_case_01_single_sine
+2025-11-29 16:31:20 - data_factory - INFO - 处理配置文件: test_case_02b_random_sine.yaml
+2025-11-29 16:31:20 - data_factory - INFO - 加载配置文件: input\test_case_02b_random_sine.yaml
+2025-11-29 16:31:20 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:20 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:20 - data_factory - INFO - 数据生成完成，共 10120 行，3 列
+2025-11-29 16:31:20 - data_factory - INFO - 数据已导出到: output\test_case_02b_random_sine_20251129_163120_history.csv
+2025-11-29 16:31:20 - data_factory - INFO - 历史数据已导出到: output\test_case_02b_random_sine_20251129_163120_history.csv (共 10000 行)
+2025-11-29 16:31:20 - data_factory - INFO - 数据已导出到: output\test_case_02b_random_sine_20251129_163120.csv
+2025-11-29 16:31:20 - data_factory - INFO - 完整数据已导出到: output\test_case_02b_random_sine_20251129_163120.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:20 - data_factory - INFO -   ✓ 完成: test_case_02b_random_sine
+2025-11-29 16:31:20 - data_factory - INFO - 处理配置文件: test_case_02_multi_sine.yaml
+2025-11-29 16:31:20 - data_factory - INFO - 加载配置文件: input\test_case_02_multi_sine.yaml
+2025-11-29 16:31:20 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:20 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:20 - data_factory - INFO - 数据生成完成，共 10120 行，3 列
+2025-11-29 16:31:21 - data_factory - INFO - 数据已导出到: output\test_case_02_multi_sine_20251129_163120_history.csv
+2025-11-29 16:31:21 - data_factory - INFO - 历史数据已导出到: output\test_case_02_multi_sine_20251129_163120_history.csv (共 10000 行)
+2025-11-29 16:31:21 - data_factory - INFO - 数据已导出到: output\test_case_02_multi_sine_20251129_163120.csv
+2025-11-29 16:31:21 - data_factory - INFO - 完整数据已导出到: output\test_case_02_multi_sine_20251129_163120.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:21 - data_factory - INFO -   ✓ 完成: test_case_02_multi_sine
+2025-11-29 16:31:21 - data_factory - INFO - 处理配置文件: test_case_03b_lag_follow_constrained.yaml
+2025-11-29 16:31:21 - data_factory - INFO - 加载配置文件: input\test_case_03b_lag_follow_constrained.yaml
+2025-11-29 16:31:21 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:21 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:21 - data_factory - INFO - 数据生成完成，共 10120 行，3 列
+2025-11-29 16:31:21 - data_factory - INFO - 数据已导出到: output\test_case_03b_lag_follow_constrained_20251129_163121_history.csv
+2025-11-29 16:31:21 - data_factory - INFO - 历史数据已导出到: output\test_case_03b_lag_follow_constrained_20251129_163121_history.csv (共 10000 行)
+2025-11-29 16:31:21 - data_factory - INFO - 数据已导出到: output\test_case_03b_lag_follow_constrained_20251129_163121.csv
+2025-11-29 16:31:21 - data_factory - INFO - 完整数据已导出到: output\test_case_03b_lag_follow_constrained_20251129_163121.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:21 - data_factory - INFO -   ✓ 完成: test_case_03b_lag_follow_constrained
+2025-11-29 16:31:21 - data_factory - INFO - 处理配置文件: test_case_03_lag_follow.yaml
+2025-11-29 16:31:21 - data_factory - INFO - 加载配置文件: input\test_case_03_lag_follow.yaml
+2025-11-29 16:31:21 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:21 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:21 - data_factory - INFO - 数据生成完成，共 10120 行，3 列
+2025-11-29 16:31:21 - data_factory - INFO - 数据已导出到: output\test_case_03_lag_follow_20251129_163121_history.csv
+2025-11-29 16:31:21 - data_factory - INFO - 历史数据已导出到: output\test_case_03_lag_follow_20251129_163121_history.csv (共 10000 行)
+2025-11-29 16:31:21 - data_factory - INFO - 数据已导出到: output\test_case_03_lag_follow_20251129_163121.csv
+2025-11-29 16:31:21 - data_factory - INFO - 完整数据已导出到: output\test_case_03_lag_follow_20251129_163121.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:21 - data_factory - INFO -   ✓ 完成: test_case_03_lag_follow
+2025-11-29 16:31:21 - data_factory - INFO - 处理配置文件: test_case_04a_polynomial_lag.yaml
+2025-11-29 16:31:21 - data_factory - INFO - 加载配置文件: input\test_case_04a_polynomial_lag.yaml
+2025-11-29 16:31:21 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:21 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:21 - data_factory - INFO - 数据生成完成，共 10120 行，4 列
+2025-11-29 16:31:22 - data_factory - INFO - 数据已导出到: output\test_case_04a_polynomial_lag_20251129_163121_history.csv
+2025-11-29 16:31:22 - data_factory - INFO - 历史数据已导出到: output\test_case_04a_polynomial_lag_20251129_163121_history.csv (共 10000 行)
+2025-11-29 16:31:22 - data_factory - INFO - 数据已导出到: output\test_case_04a_polynomial_lag_20251129_163121.csv
+2025-11-29 16:31:22 - data_factory - INFO - 完整数据已导出到: output\test_case_04a_polynomial_lag_20251129_163121.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:22 - data_factory - INFO -   ✓ 完成: test_case_04a_polynomial_lag
+2025-11-29 16:31:22 - data_factory - INFO - 处理配置文件: test_case_04b_nonlinear_lag.yaml
+2025-11-29 16:31:22 - data_factory - INFO - 加载配置文件: input\test_case_04b_nonlinear_lag.yaml
+2025-11-29 16:31:22 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:22 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:22 - data_factory - INFO - 数据生成完成，共 10120 行，4 列
+2025-11-29 16:31:22 - data_factory - INFO - 数据已导出到: output\test_case_04b_nonlinear_lag_20251129_163122_history.csv
+2025-11-29 16:31:22 - data_factory - INFO - 历史数据已导出到: output\test_case_04b_nonlinear_lag_20251129_163122_history.csv (共 10000 行)
+2025-11-29 16:31:22 - data_factory - INFO - 数据已导出到: output\test_case_04b_nonlinear_lag_20251129_163122.csv
+2025-11-29 16:31:22 - data_factory - INFO - 完整数据已导出到: output\test_case_04b_nonlinear_lag_20251129_163122.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:22 - data_factory - INFO -   ✓ 完成: test_case_04b_nonlinear_lag
+2025-11-29 16:31:22 - data_factory - INFO - 处理配置文件: test_case_04c_polynomial_sine.yaml
+2025-11-29 16:31:22 - data_factory - INFO - 加载配置文件: input\test_case_04c_polynomial_sine.yaml
+2025-11-29 16:31:22 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:22 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:22 - data_factory - INFO - 数据生成完成，共 10120 行，4 列
+2025-11-29 16:31:22 - data_factory - INFO - 数据已导出到: output\test_case_04c_polynomial_sine_20251129_163122_history.csv
+2025-11-29 16:31:22 - data_factory - INFO - 历史数据已导出到: output\test_case_04c_polynomial_sine_20251129_163122_history.csv (共 10000 行)
+2025-11-29 16:31:22 - data_factory - INFO - 数据已导出到: output\test_case_04c_polynomial_sine_20251129_163122.csv
+2025-11-29 16:31:22 - data_factory - INFO - 完整数据已导出到: output\test_case_04c_polynomial_sine_20251129_163122.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:22 - data_factory - INFO -   ✓ 完成: test_case_04c_polynomial_sine
+2025-11-29 16:31:22 - data_factory - INFO - 处理配置文件: test_case_04d_polynomial_sine_lag.yaml
+2025-11-29 16:31:22 - data_factory - INFO - 加载配置文件: input\test_case_04d_polynomial_sine_lag.yaml
+2025-11-29 16:31:22 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:22 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:22 - data_factory - INFO - 数据生成完成，共 10120 行，4 列
+2025-11-29 16:31:23 - data_factory - INFO - 数据已导出到: output\test_case_04d_polynomial_sine_lag_20251129_163122_history.csv
+2025-11-29 16:31:23 - data_factory - INFO - 历史数据已导出到: output\test_case_04d_polynomial_sine_lag_20251129_163122_history.csv (共 10000 行)
+2025-11-29 16:31:23 - data_factory - INFO - 数据已导出到: output\test_case_04d_polynomial_sine_lag_20251129_163122.csv
+2025-11-29 16:31:23 - data_factory - INFO - 完整数据已导出到: output\test_case_04d_polynomial_sine_lag_20251129_163122.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:23 - data_factory - INFO -   ✓ 完成: test_case_04d_polynomial_sine_lag
+2025-11-29 16:31:23 - data_factory - INFO - 处理配置文件: test_case_04e_polynomial_multi_lag.yaml
+2025-11-29 16:31:23 - data_factory - INFO - 加载配置文件: input\test_case_04e_polynomial_multi_lag.yaml
+2025-11-29 16:31:23 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:23 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:23 - data_factory - INFO - 数据生成完成，共 10120 行，11 列
+2025-11-29 16:31:23 - data_factory - INFO - 数据已导出到: output\test_case_04e_polynomial_multi_lag_20251129_163123_history.csv
+2025-11-29 16:31:23 - data_factory - INFO - 历史数据已导出到: output\test_case_04e_polynomial_multi_lag_20251129_163123_history.csv (共 10000 行)
+2025-11-29 16:31:23 - data_factory - INFO - 数据已导出到: output\test_case_04e_polynomial_multi_lag_20251129_163123.csv
+2025-11-29 16:31:23 - data_factory - INFO - 完整数据已导出到: output\test_case_04e_polynomial_multi_lag_20251129_163123.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:23 - data_factory - INFO -   ✓ 完成: test_case_04e_polynomial_multi_lag
+2025-11-29 16:31:23 - data_factory - INFO - 处理配置文件: test_case_04f_polynomial_mixed_lag.yaml
+2025-11-29 16:31:23 - data_factory - INFO - 加载配置文件: input\test_case_04f_polynomial_mixed_lag.yaml
+2025-11-29 16:31:23 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:23 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:23 - data_factory - INFO - 数据生成完成，共 10120 行，4 列
+2025-11-29 16:31:23 - data_factory - INFO - 数据已导出到: output\test_case_04f_polynomial_mixed_lag_20251129_163123_history.csv
+2025-11-29 16:31:23 - data_factory - INFO - 历史数据已导出到: output\test_case_04f_polynomial_mixed_lag_20251129_163123_history.csv (共 10000 行)
+2025-11-29 16:31:23 - data_factory - INFO - 数据已导出到: output\test_case_04f_polynomial_mixed_lag_20251129_163123.csv
+2025-11-29 16:31:23 - data_factory - INFO - 完整数据已导出到: output\test_case_04f_polynomial_mixed_lag_20251129_163123.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:23 - data_factory - INFO -   ✓ 完成: test_case_04f_polynomial_mixed_lag
+2025-11-29 16:31:23 - data_factory - INFO - 处理配置文件: test_case_04g_polynomial_cascade_lag.yaml
+2025-11-29 16:31:23 - data_factory - INFO - 加载配置文件: input\test_case_04g_polynomial_cascade_lag.yaml
+2025-11-29 16:31:23 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:23 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:23 - data_factory - INFO - 数据生成完成，共 10120 行，5 列
+2025-11-29 16:31:24 - data_factory - INFO - 数据已导出到: output\test_case_04g_polynomial_cascade_lag_20251129_163123_history.csv
+2025-11-29 16:31:24 - data_factory - INFO - 历史数据已导出到: output\test_case_04g_polynomial_cascade_lag_20251129_163123_history.csv (共 10000 行)
+2025-11-29 16:31:24 - data_factory - INFO - 数据已导出到: output\test_case_04g_polynomial_cascade_lag_20251129_163123.csv
+2025-11-29 16:31:24 - data_factory - INFO - 完整数据已导出到: output\test_case_04g_polynomial_cascade_lag_20251129_163123.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:24 - data_factory - INFO -   ✓ 完成: test_case_04g_polynomial_cascade_lag
+2025-11-29 16:31:24 - data_factory - INFO - 处理配置文件: test_case_04_polynomial.yaml
+2025-11-29 16:31:24 - data_factory - INFO - 加载配置文件: input\test_case_04_polynomial.yaml
+2025-11-29 16:31:24 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:24 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:24 - data_factory - INFO - 数据生成完成，共 10120 行，5 列
+2025-11-29 16:31:24 - data_factory - INFO - 数据已导出到: output\test_case_04_polynomial_20251129_163124_history.csv
+2025-11-29 16:31:24 - data_factory - INFO - 历史数据已导出到: output\test_case_04_polynomial_20251129_163124_history.csv (共 10000 行)
+2025-11-29 16:31:24 - data_factory - INFO - 数据已导出到: output\test_case_04_polynomial_20251129_163124.csv
+2025-11-29 16:31:24 - data_factory - INFO - 完整数据已导出到: output\test_case_04_polynomial_20251129_163124.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:24 - data_factory - INFO -   ✓ 完成: test_case_04_polynomial
+2025-11-29 16:31:24 - data_factory - INFO - 处理配置文件: test_case_05_composite.yaml
+2025-11-29 16:31:24 - data_factory - INFO - 加载配置文件: input\test_case_05_composite.yaml
+2025-11-29 16:31:24 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:24 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:24 - data_factory - INFO - 数据生成完成，共 10120 行，5 列
+2025-11-29 16:31:24 - data_factory - INFO - 数据已导出到: output\test_case_05_composite_20251129_163124_history.csv
+2025-11-29 16:31:24 - data_factory - INFO - 历史数据已导出到: output\test_case_05_composite_20251129_163124_history.csv (共 10000 行)
+2025-11-29 16:31:24 - data_factory - INFO - 数据已导出到: output\test_case_05_composite_20251129_163124.csv
+2025-11-29 16:31:24 - data_factory - INFO - 完整数据已导出到: output\test_case_05_composite_20251129_163124.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:24 - data_factory - INFO -   ✓ 完成: test_case_05_composite
+2025-11-29 16:31:24 - data_factory - INFO - 处理配置文件: test_case_06_noise.yaml
+2025-11-29 16:31:24 - data_factory - INFO - 加载配置文件: input\test_case_06_noise.yaml
+2025-11-29 16:31:24 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:24 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:24 - data_factory - INFO - 数据生成完成，共 10120 行，3 列
+2025-11-29 16:31:25 - data_factory - INFO - 数据已导出到: output\test_case_06_noise_20251129_163124_history.csv
+2025-11-29 16:31:25 - data_factory - INFO - 历史数据已导出到: output\test_case_06_noise_20251129_163124_history.csv (共 10000 行)
+2025-11-29 16:31:25 - data_factory - INFO - 数据已导出到: output\test_case_06_noise_20251129_163124.csv
+2025-11-29 16:31:25 - data_factory - INFO - 完整数据已导出到: output\test_case_06_noise_20251129_163124.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:25 - data_factory - INFO -   ✓ 完成: test_case_06_noise
+2025-11-29 16:31:25 - data_factory - INFO - 处理配置文件: test_case_07_phase.yaml
+2025-11-29 16:31:25 - data_factory - INFO - 加载配置文件: input\test_case_07_phase.yaml
+2025-11-29 16:31:25 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:25 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:25 - data_factory - INFO - 数据生成完成，共 10120 行，3 列
+2025-11-29 16:31:25 - data_factory - INFO - 数据已导出到: output\test_case_07_phase_20251129_163125_history.csv
+2025-11-29 16:31:25 - data_factory - INFO - 历史数据已导出到: output\test_case_07_phase_20251129_163125_history.csv (共 10000 行)
+2025-11-29 16:31:25 - data_factory - INFO - 数据已导出到: output\test_case_07_phase_20251129_163125.csv
+2025-11-29 16:31:25 - data_factory - INFO - 完整数据已导出到: output\test_case_07_phase_20251129_163125.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:25 - data_factory - INFO -   ✓ 完成: test_case_07_phase
+2025-11-29 16:31:25 - data_factory - INFO - 处理配置文件: test_case_08_complex.yaml
+2025-11-29 16:31:25 - data_factory - INFO - 加载配置文件: input\test_case_08_complex.yaml
+2025-11-29 16:31:25 - data_factory - INFO - 数据生成器已创建
+2025-11-29 16:31:25 - data_factory - INFO - 开始生成数据...
+2025-11-29 16:31:25 - data_factory - INFO - 数据生成完成，共 10120 行，6 列
+2025-11-29 16:31:25 - data_factory - INFO - 数据已导出到: output\test_case_08_complex_20251129_163125_history.csv
+2025-11-29 16:31:25 - data_factory - INFO - 历史数据已导出到: output\test_case_08_complex_20251129_163125_history.csv (共 10000 行)
+2025-11-29 16:31:25 - data_factory - INFO - 数据已导出到: output\test_case_08_complex_20251129_163125.csv
+2025-11-29 16:31:25 - data_factory - INFO - 完整数据已导出到: output\test_case_08_complex_20251129_163125.csv (共 10120 行，包含未来 120 点)
+2025-11-29 16:31:25 - data_factory - INFO -   ✓ 完成: test_case_08_complex
+2025-11-29 16:31:25 - data_factory - INFO - 批量生成完成

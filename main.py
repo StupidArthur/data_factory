@@ -106,10 +106,51 @@ def generate_data(config_path: str, output_path: str = None, preview: bool = Fal
 
 if __name__ == '__main__':
     # 配置参数
-    config_path = 'config/test_case_04g_polynomial_cascade_lag.yaml'  # 配置文件路径（支持YAML和JSON）
-    output_path = 'output/test_case_04g_polynomial_cascade_lag.csv'  # 输出文件路径（None表示不导出）
+    input_dir = 'input'  # 输入配置文件目录
+    output_dir = 'output'  # 输出数据目录
     preview = False  # 是否预览数据（True表示预览，False表示导出）
     
-    # 生成数据
-    generate_data(config_path, output_path, preview)
+    # 遍历input目录下的所有配置文件
+    from pathlib import Path
+    
+    input_path = Path(input_dir)
+    output_path = Path(output_dir)
+    output_path.mkdir(parents=True, exist_ok=True)
+    
+    # 获取所有YAML和YML文件
+    config_files = list(input_path.glob('*.yaml')) + list(input_path.glob('*.yml'))
+    
+    if not config_files:
+        logger = get_logger()
+        logger.warning(f"在 {input_dir} 目录下没有找到配置文件")
+        print(f"在 {input_dir} 目录下没有找到配置文件")
+    else:
+        logger = get_logger()
+        logger.info(f"找到 {len(config_files)} 个配置文件，开始批量生成数据...")
+        print(f"找到 {len(config_files)} 个配置文件，开始批量生成数据...")
+        
+        for config_file in config_files:
+            try:
+                # 生成输出文件名（使用配置文件名，去掉扩展名）
+                base_name = config_file.stem
+                
+                # 生成数据
+                logger.info(f"处理配置文件: {config_file.name}")
+                print(f"处理配置文件: {config_file.name}")
+                
+                # 生成数据（不指定output_path，在generate_data函数内部处理）
+                # 但我们需要指定输出路径，所以直接调用generate_data
+                output_file = output_path / f"{base_name}.csv"
+                generate_data(str(config_file), str(output_file), preview)
+                
+                logger.info(f"  ✓ 完成: {base_name}")
+                print(f"  ✓ 完成: {base_name}")
+            except Exception as e:
+                logger.error(f"  ✗ 失败: {config_file.name} - {e}")
+                print(f"  ✗ 失败: {config_file.name} - {e}")
+                import traceback
+                traceback.print_exc()
+        
+        logger.info("批量生成完成")
+        print("批量生成完成")
 

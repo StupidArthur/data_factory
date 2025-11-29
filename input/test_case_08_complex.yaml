@@ -1,0 +1,68 @@
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: '2024-01-01 00:00:00'
+  templates:
+  - type: ExpressionTemplate
+    name: light
+    config:
+      output_name: F.light
+      calculation:
+        expression: 50.0 + 100.0 * sin(2 * pi * t / 86400.0 + 0.0)
+      noise_level: 0.03
+  - type: ExpressionTemplate
+    name: power
+    config:
+      output_name: F.power
+      calculation:
+        expression: 100.0 + 50.0 * sin(2 * pi * t / 86400.0 + 1.5707963267948968)
+      noise_level: 0.02
+  - type: ExpressionTemplate
+    name: temperature
+    config:
+      output_name: F.temperature
+      sources:
+      - source_name: F.power
+        lag_seconds: 30
+      calculation:
+        expression: 20.0 + 0.5 * (x1 - 20.0) * exp(-0.01 * t / 3600)
+      noise_level: 0.02
+  - type: ExpressionTemplate
+    name: humidity
+    config:
+      output_name: F.humidity
+      sources:
+      - source_name: F.light
+        lag_seconds: 60
+      calculation:
+        expression: 60.0 + 0.3 * (x1 - 60.0) * exp(-0.005 * t / 3600)
+      noise_level: 0.02
+  - type: ExpressionTemplate
+    name: composite
+    config:
+      output_name: F.composite
+      sources:
+      - source_name: F.light
+        lag_seconds: 0
+      - source_name: F.power
+        lag_seconds: 0
+      - source_name: F.temperature
+        lag_seconds: 0
+      - source_name: F.humidity
+        lag_seconds: 0
+      calculation:
+        expression: 100.0 + 0.5 * x1 + 0.3 * x2 + 0.2 * x3 + 0.1 * x4 + 0.001 * x1
+          * x2 + 0.0005 * x3 * x4
+      noise_level: 0.05
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  column_descriptions:
+    timeStamp: 时间戳
+    F.light: 光照强度（24小时周期）
+    F.power: 电功率（24小时周期，6小时偏移）
+    F.temperature: 温度（滞后跟随功率30秒）
+    F.humidity: 湿度（滞后跟随光照60秒）
+    F.composite: 综合指标（多项式组合）

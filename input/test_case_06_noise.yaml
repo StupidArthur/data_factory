@@ -1,0 +1,28 @@
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: '2024-01-01 00:00:00'
+  templates:
+  - type: ExpressionTemplate
+    name: clean
+    config:
+      output_name: F.clean
+      calculation:
+        expression: 50.0 + 100.0 * sin(2 * pi * t / 3600.0 + 0.0)
+      noise_level: 0.0
+  - type: ExpressionTemplate
+    name: noisy
+    config:
+      output_name: F.noisy
+      calculation:
+        expression: 50.0 + 100.0 * sin(2 * pi * t / 3600.0 + 0.0)
+      noise_level: 0.1
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  column_descriptions:
+    timeStamp: 时间戳
+    F.clean: 无噪声正弦波
+    F.noisy: 有噪声正弦波（10%噪声）

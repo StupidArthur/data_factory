@@ -2,23 +2,16 @@
 数据关系能力模板模块
 
 提供各种数据生成能力模板，支持插件化扩展。
+
+注意：当前版本只支持ExpressionTemplate，旧的模板类型（TimePatternTemplate、LagFollowTemplate等）已被移除。
 """
 
-from core.relationships.base import CapabilityTemplate, CompositeCapabilityTemplate
-from core.relationships.time_pattern import TimePatternTemplate
-from core.relationships.lag_follow import LagFollowTemplate
-from core.relationships.polynomial import PolynomialTemplate
-from core.relationships.random_pattern import RandomPatternTemplate
-from core.relationships.nonlinear_lag import NonlinearLagTemplate
+from core.relationships.base import CapabilityTemplate
+from core.relationships.expression import ExpressionTemplate
 
-# 模板类型注册表
+# 模板类型注册表（只支持ExpressionTemplate）
 _TEMPLATE_REGISTRY = {
-    'TimePatternTemplate': TimePatternTemplate,
-    'LagFollowTemplate': LagFollowTemplate,
-    'PolynomialTemplate': PolynomialTemplate,
-    'RandomPatternTemplate': RandomPatternTemplate,
-    'NonlinearLagTemplate': NonlinearLagTemplate,
-    'CompositeCapabilityTemplate': CompositeCapabilityTemplate,
+    'ExpressionTemplate': ExpressionTemplate,
 }
 
 
@@ -55,12 +48,7 @@ def register_template(template_type: str, template_class):
 
 __all__ = [
     'CapabilityTemplate',
-    'CompositeCapabilityTemplate',
-    'TimePatternTemplate',
-    'LagFollowTemplate',
-    'PolynomialTemplate',
-    'RandomPatternTemplate',
-    'NonlinearLagTemplate',
+    'ExpressionTemplate',
     'get_template_class',
     'register_template',
 ]

@@ -1,0 +1,32 @@
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: '2024-01-01 00:00:00'
+  templates:
+  - type: ExpressionTemplate
+    name: value1
+    config:
+      output_name: F.value1
+      calculation:
+        expression: 0.0 + (100.0 - 0.0) * random()
+      noise_level: 0.0
+  - type: ExpressionTemplate
+    name: value2
+    config:
+      output_name: F.value2
+      sources:
+      - source_name: F.value1
+        lag_seconds: 300
+      calculation:
+        expression: x1
+      noise_level: 0.0
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  hide_parameter_descriptions: true
+  column_descriptions:
+    timeStamp: 时间戳
+    F.value1: 随机数（0~100均匀分布）
+    F.value2: 滞后跟随Value1（滞后5分钟）

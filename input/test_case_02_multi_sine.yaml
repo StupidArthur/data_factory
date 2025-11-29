@@ -1,0 +1,29 @@
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: '2024-01-01 00:00:00'
+  templates:
+  - type: ExpressionTemplate
+    name: sine_wave_1
+    config:
+      output_name: F.sine1
+      calculation:
+        expression: 50.0 + 100.0 * sin(2 * pi * t / 3600.0 + 0.0)
+      noise_level: 0.0
+  - type: ExpressionTemplate
+    name: sine_wave_2
+    config:
+      output_name: F.sine2
+      calculation:
+        expression: 30.0 + 50.0 * sin(2 * pi * t / 7200.0 + 0.0)
+      noise_level: 0.0
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  hide_parameter_descriptions: true
+  column_descriptions:
+    timeStamp: 时间戳
+    F.sine1: 正弦波1（振幅100，周期1小时）
+    F.sine2: 正弦波2（振幅50，周期2小时）

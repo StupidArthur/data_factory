@@ -1,0 +1,29 @@
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: '2024-01-01 00:00:00'
+  templates:
+  - type: ExpressionTemplate
+    name: random_input
+    config:
+      output_name: F.random
+      calculation:
+        expression: -100.0 + (100.0 - -100.0) * random()
+      noise_level: 0.0
+  - type: ExpressionTemplate
+    name: sine_target
+    config:
+      output_name: F.sine
+      calculation:
+        expression: 50.0 + 100.0 * sin(2 * pi * t / 3600.0 + 0.0)
+      noise_level: 0.0
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  hide_parameter_descriptions: true
+  column_descriptions:
+    timeStamp: 时间戳
+    F.random: 随机数输入（-100到100均匀分布）
+    F.sine: 正弦波目标（振幅100，周期1小时）

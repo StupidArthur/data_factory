@@ -1,0 +1,51 @@
+generator:
+  time_interval: 5.0
+  history_points: 10000
+  future_points: 120
+  start_time: '2024-01-01 00:00:00'
+  templates:
+  - type: ExpressionTemplate
+    name: x
+    config:
+      output_name: F.x
+      calculation:
+        expression: 0.0 + 50.0 * sin(2 * pi * t / 3600.0 + 0.0)
+      noise_level: 0.0
+  - type: ExpressionTemplate
+    name: y
+    config:
+      output_name: F.y
+      calculation:
+        expression: 0.0 + 30.0 * sin(2 * pi * t / 7200.0 + 0.0)
+      noise_level: 0.0
+  - type: ExpressionTemplate
+    name: z
+    config:
+      output_name: F.z
+      calculation:
+        expression: 0.0 + 20.0 * sin(2 * pi * t / 1800.0 + 0.0)
+      noise_level: 0.0
+  - type: ExpressionTemplate
+    name: combined
+    config:
+      output_name: F.combined
+      sources:
+      - source_name: F.x
+        lag_seconds: 0
+      - source_name: F.y
+        lag_seconds: 0
+      - source_name: F.z
+        lag_seconds: 0
+      calculation:
+        expression: 10.0 + 0.1 * x1 + 0.2 * x2 + 0.3 * x3 + 0.001 * x1 * x2
+      noise_level: 0.0
+template:
+  time_format: datetime
+  has_title_row: true
+  has_description_row: true
+  column_descriptions:
+    timeStamp: 时间戳
+    F.x: 源参数X（正弦波）
+    F.y: 源参数Y（正弦波）
+    F.z: 源参数Z（正弦波）
+    F.combined: 组合参数（多项式关系）
